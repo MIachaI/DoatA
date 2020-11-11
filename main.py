@@ -8,10 +8,10 @@ r = requests.get(url,headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac O
 
 soup = BeautifulSoup(r.text, 'html.parser')
 
-for a in soup.find_all('a', href=True):
-    if(re.findall('.matches\/\d*',a['href'])):
-        matchesList.append(a['href'])
+for a in soup.find_all(href=re.compile('.matches\/\d*')):
+    matchesList.append(a['href'])
 
 #print(soup.find_all('a rel'))
 print(matchesList)
 
+soup.find_all(href=re.compile("elsie"), id='link1')
