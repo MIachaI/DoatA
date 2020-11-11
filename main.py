@@ -11,7 +11,8 @@ soup = BeautifulSoup(r.text, 'html.parser')
 for a in soup.find_all(href=re.compile('.matches\/\d*')):
     matchesList.append(a['href'])
 
-#print(soup.find_all('a rel'))
-print(matchesList)
+#print(matchesList)
+nextPage = soup.find_all(attrs={"rel": "next"})
+print(nextPage[0]['href'])
 
 soup.find_all(href=re.compile("elsie"), id='link1')
